@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex24</title>
+    <style>
+        .card{
+            width: 300px;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+            transition: 0.3s;
+            float: left;
+            position: relative;
+        }
+        .card:hover{
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+        }
+        .card img{
+            width: 100%;
+            height: 60%;
+            border-radius: 5px;
+            display: block;
+            border: solid 1px rgb(230,140,230,0.4);
+        }
+        .card h2{
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        .card p{
+            font-size: 16px;
+            color: #666;
+        }
+        #cardsContainer{
+            margin: 10px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card div{
+            background-color: rgba(0,0,0,0.6);
+            width: 70px;
+            color: bisque;
+            position: absolute;
+            top: 50%;
+            transform: rotate(-20deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="cardsContainer"></div>
+    <script>
+        titles=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        descriptions=[
+            "Description 1",
+            "Description 2",
+            "Description 3",
+            "Description 4",
+            "Description 5",
+            "Description 6"
+        ]; 
+        images=[ 
+            "IWT302_LAB/images/1.jpeg",
+            "IWT302_LAB/images/2.jpeg",
+            "IWT302_LAB/images/3.jpeg",
+            "IWT302_LAB/images/4.jpeg",
+            "IWT302_LAB/images/5.jpeg",
+            "IWT302_LAB/images/6.jpg"
+        ];
+        dates=["28-March","15-April","18-April","27-April","4-May"];
+        function generateCards(titles, descriptions,images){
+            cardsContainer=document.getElementById("cardsContainer");
+            for(i=0;i<titles.length;i++)
+            {
+                card=document.createElement("div");
+                card.className="card";
+
+                image=document.createElement("img");
+                image.src=images[i];
+                card.appendChild(image);
+
+                dt=document.createElement("div");
+                dt.textContent=dates[i];
+                card.appendChild(dt)
+
+                title=document.createElement("h2");
+                title.textContent=titles[i];
+                card.appendChild(title);
+
+                description=document.createElement("p");
+                description.textContent=descriptions[i];
+                card.appendChild(description);
+
+                buttns=document.createElement("button");
+                buttns.textContent="Register";
+                card.appendChild(buttns);
+
+                cardsContainer.appendChild(card);
+            }
+           
+        }
+        generateCards(titles,descriptions,images);
+    </script>
+</body>
+</html>
